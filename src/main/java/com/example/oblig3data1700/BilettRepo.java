@@ -19,7 +19,7 @@ public class BilettRepo {
     }
 
     public List<Bilett> hentBilett(){
-        String sql = "SELECT * FROM BILETT";
+        String sql = "SELECT * FROM BILETT ORDER BY etternavn";
         return db.query(sql, new BeanPropertyRowMapper(Bilett.class));
     }
 
