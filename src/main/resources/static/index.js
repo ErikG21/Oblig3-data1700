@@ -126,4 +126,4 @@ let utMeldingNummer = "";
     });
 }
 
-window.addEventListener("load", hentAlle);
+    window.addEventListener("load", hentAlle);
