@@ -27,4 +27,9 @@ public class BilettRepo {
         String sql = "DELETE FROM BILETT";
         db.update(sql);
     }
+
+    public void slettEnBilett(int id){
+        String sql = "DELETE FROM BILETT WHERE id=?";
+        db.update(sql, id);
+    }
 }

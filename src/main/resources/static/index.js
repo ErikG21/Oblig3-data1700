@@ -89,9 +89,18 @@ let utMeldingNummer = "";
     }
 
     function formaterData(biletter){
-        let ut = "<table><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Epost</th><th>Nummer</th></tr>";
+        let ut = "<table class='table table-striped'>" +
+            "<tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Epost</th><th>Nummer</th><th></th></tr>";
         for (const x of biletter){
-            ut+="<tr><td>"+x.film+"</td><td>"+x.antall+"</td><td>"+x.fornavn+"</td><td>"+x.etternavn+"</td><td>"+x.epost+"</td><td>"+x.nummer+"</td></tr>";
+            ut+="<tr>" +
+                "<td>"+x.film+"</td>" +
+                "<td>"+x.antall+"</td>" +
+                "<td>"+x.fornavn+"</td>" +
+                "<td>"+x.etternavn+"</td>" +
+                "<td>"+x.epost+"</td>" +
+                "<td>"+x.nummer+"</td>" +
+                "<td><button class='btn btn-danger' onclick='slettEnBilett("+x.id+")'>Slett</button></td"+
+            " </tr>";
         }
         ut+="</table>";
         $("#output").html(ut);
@@ -109,3 +118,12 @@ let utMeldingNummer = "";
     $("#epostValideringsmelding").HTML = "";
     $("#nummerValideringsmelding").HTML = "";
 }
+
+    function slettEnBilett(id){
+    const url = "/slettEnBilett?id=" + id;
+    $.get(url,function (){
+        window.location.href = "/";
+    });
+}
+
+window.addEventListener("load", hentAlle);

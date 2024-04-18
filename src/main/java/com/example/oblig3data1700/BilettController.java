@@ -3,6 +3,7 @@ package com.example.oblig3data1700;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,12 +20,17 @@ public class BilettController {
     }
 
     @GetMapping("/hentAlle")
-        public List<Bilett> hentAlle(){
+    public List<Bilett> hentAlle(){
             return rep.hentBilett();
     }
 
     @GetMapping ("/slettAlle")
     public void slettAlle(){
         rep.slettBilett();
+    }
+
+    @GetMapping("/slettEnBilett")
+    public void slettEnBilett(@RequestParam("id") int id){
+        rep.slettEnBilett(id);
     }
 }
