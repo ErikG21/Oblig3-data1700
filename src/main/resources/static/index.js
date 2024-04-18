@@ -122,7 +122,7 @@ let utMeldingNummer = "";
     function slettEnBilett(id){
     const url = "/slettEnBilett?id=" + id;
     $.get(url,function (){
-        window.location.href = "/";
+        hentAlle();
     });
 }
 
