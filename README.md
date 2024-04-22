@@ -10,4 +10,4 @@ Dette er en applikasjon som henter inn innput fra brukeren for å opprette kino-
 variablene blir validert med RegExpressions før de blir sendt til en H2 in memory 
 server som lagrer et Bilett objekt i en tabell i en SQL database. Deretter blir java brukt til å 
 hente ut dataen fra serveren og det blir vist i en div på html siden. 
-Jquery, javascript, java, html og bootstrap ble brukt. 
+Jquery, javascript, java, html og bootstrap ble brukt. Jeg har også testet ut litt lombok for morroskyld.
