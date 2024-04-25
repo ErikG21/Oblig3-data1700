@@ -1,8 +1,8 @@
-//Strenger for utskrift av bilett
-let utMeldingFornavn = "";
-let utMeldingEtternavn = "";
-let utMeldingEpost = "";
-let utMeldingNummer = "";
+    //Strenger for inputvalidering
+    let utMeldingFornavn = "";
+    let utMeldingEtternavn = "";
+    let utMeldingEpost = "";
+    let utMeldingNummer = "";
 
     function inputValidering (){
 
@@ -21,6 +21,8 @@ let utMeldingNummer = "";
     const regexEpost = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
     const regexNummer = /^((0047)?|(\+47)?)[4|9]\d{7}$/
 
+        //regexNavn sin test funkjson blir kalt på fornavnInput
+        //deretter blir fornavnInput sin value kopiert til utMeldingFornavn
     if (regexNavn.test(fornavnInput)) {
         utMeldingFornavn = $('#fornavn').val();
     } else {
@@ -52,10 +54,8 @@ let utMeldingNummer = "";
 
     function opprettBilett() {
 
-    //variabler i bilett objekt blir opprettet med en verdi
+    //Bilett blir opprettet med variabler og deres verdier
     const bilett = {
-        //kode for select isteden for radioknapper
-        // film: document.getElementById("velgFilm").value,
         //variabler uten input validering
         film: $('input[name=velg-film]:checked').val(),
         antall: $("#antallPersoner").val(),
@@ -83,12 +83,15 @@ let utMeldingNummer = "";
 }
 
     function hentAlle(){
+        //get kall til localhost:8080/hentAlle for å ente "data" altså billetten
+        //deretter blir billetten sendt videre til formaterdata()
         $.get("/hentAlle", function (data) {
             formaterData(data);
         });
     }
 
     function formaterData(biletter){
+        //billetten blir printet ut i en tabell
         let ut = "<table class='table table-striped'>" +
             "<tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Epost</th><th>Nummer</th><th></th></tr>";
         for (const x of biletter){
@@ -120,10 +123,10 @@ let utMeldingNummer = "";
 }
 
     function slettEnBilett(id){
+        //ved hjelp av id som innparameter lages et get kall til /slettEnBilett?id
+        //etter billett er slettet kalles hentAlle()
     const url = "/slettEnBilett?id=" + id;
     $.get(url,function (){
         hentAlle();
     });
 }
-
-    window.addEventListener("load", hentAlle);

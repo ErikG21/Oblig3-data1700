@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+//her lager jeg en veldig enkel pojo ved bruk av lombok for å
+//generere getter, setter, konstruktør og en tom konstruktør. Bare for morroskyld
 public class Bilett {
     private int id;
     private String fornavn;
